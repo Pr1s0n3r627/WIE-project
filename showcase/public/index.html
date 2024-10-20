@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showcase Demo</title>
+</head>
+<body>
+    <h1>Health Emergency App Showcase</h1>
+    <p>This is a simple demo to show progress.</p>
+    <button id="fetchData">Fetch Data</button>
+    <div id="data">
+        <h2>Status: <span id="status"></span></h2>
+        <p id="message"></p>
+        <h3>Daily Checkup</h3>
+        <ul>
+            <li>Heart Rate: <span id="heartRate"></span></li>
+            <li>Blood Pressure: <span id="bloodPressure"></span></li>
+            <li>Temperature: <span id="temperature"></span></li>
+        </ul>
+        <h3>Emergency Contacts</h3>
+        <ul id="emergencyContacts"></ul>
+    </div>
+
+    <script>
+        document.getElementById('fetchData').onclick = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/data');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+
+                document.getElementById('status').textContent = data.status;
+                document.getElementById('message').textContent = data.message;
+                document.getElementById('heartRate').textContent = data.dailyCheckup.heartRate;
+                document.getElementById('bloodPressure').textContent = data.dailyCheckup.bloodPressure;
+                document.getElementById('temperature').textContent = data.dailyCheckup.temperature;
+
+                const contactsList = document.getElementById('emergencyContacts');
+                contactsList.innerHTML = '';
+                data.emergencyContacts.forEach(contact => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${contact.name}: ${contact.phone}`;
+                    contactsList.appendChild(listItem);
+                });
+            } catch (error) {
+                document.getElementById('data').textContent = 'Error fetching data: ' + error.message;
+            }
+        };
+    </script>
+</body>
+</html>

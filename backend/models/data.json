@@ -1,0 +1,108 @@
+{
+    "status": "success",
+    "message": "Health Emergency App Showcase Data",
+    "dailyCheckup": [
+      {
+        "date": "2024-10-15",
+        "heartRate": 75,
+        "bloodPressure": "115/75",
+        "temperature": "98.7°F"
+      },
+      {
+        "date": "2024-10-14",
+        "heartRate": 72,
+        "bloodPressure": "120/80",
+        "temperature": "98.6°F"
+      },
+      {
+        "date": "2024-10-13",
+        "heartRate": 78,
+        "bloodPressure": "130/85",
+        "temperature": "99.1°F"
+      },
+      {
+        "date": "2024-10-12",
+        "heartRate": 65,
+        "bloodPressure": "110/70",
+        "temperature": "98.4°F"
+      },
+      {
+        "date": "2024-10-11",
+        "heartRate": 80,
+        "bloodPressure": "140/90",
+        "temperature": "99.5°F"
+      },
+      {
+        "date": "2024-10-10",
+        "heartRate": 69,
+        "bloodPressure": "115/76",
+        "temperature": "98.2°F"
+      },
+      {
+        "date": "2024-10-09",
+        "heartRate": 82,
+        "bloodPressure": "130/88",
+        "temperature": "99.0°F"
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "name": "Dr. Smith",
+        "phone": "+1-555-1234",
+        "relationship": "Primary Physician"
+      },
+      {
+        "name": "Hospital Emergency",
+        "phone": "+1-555-9876",
+        "relationship": "Nearest Hospital"
+      },
+      {
+        "name": "Dr. Emily Johnson",
+        "phone": "+1-555-5678",
+        "relationship": "Cardiologist"
+      },
+      {
+        "name": "Family Member",
+        "phone": "+1-555-8765",
+        "relationship": "Spouse"
+      },
+      {
+        "name": "Dr. Sarah Lee",
+        "phone": "+1-555-4321",
+        "relationship": "Endocrinologist"
+      },
+      {
+        "name": "Neighbor - John Doe",
+        "phone": "+1-555-9871",
+        "relationship": "Emergency Contact"
+      }
+    ],
+    "medicalHistory": [
+      {
+        "condition": "Hypertension",
+        "diagnosedOn": "2019-03-15",
+        "medications": ["Atenolol", "Lisinopril"]
+      },
+      {
+        "condition": "Type 2 Diabetes",
+        "diagnosedOn": "2021-07-21",
+        "medications": ["Metformin", "Insulin"]
+      },
+      {
+        "condition": "Asthma",
+        "diagnosedOn": "2015-08-10",
+        "medications": ["Albuterol Inhaler", "Montelukast"]
+      },
+      {
+        "condition": "Cholesterol",
+        "diagnosedOn": "2020-11-25",
+        "medications": ["Atorvastatin"]
+      },
+      {
+        "condition": "Allergies (Seasonal)",
+        "diagnosedOn": "2017-04-12",
+        "medications": ["Cetirizine", "Fluticasone Nasal Spray"]
+      }
+    ]
+  }
+  
