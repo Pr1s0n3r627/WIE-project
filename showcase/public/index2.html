@@ -329,12 +329,26 @@
         <section id = "contact" class = "contact py">
             <div class = "container grid">
                 <div class = "contact-left">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.959193395844!2d77.58162287528204!3d28.450646475764593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cbf94deb6bc39%3A0x7ba6bedc9a2b537f!2sBennett%20University!5e0!3m2!1sen!2sin!4v1729139987756!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d28064.234286458308!2d77.56189644427171!3d28.44853356043545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shospital%20near%20bennett%20university!5e0!3m2!1sen!2sin!4v1729439543144!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </div>
                 <div class = "contact-right text-white text-center bg-blue2">
                     <div class = "contact-head">
                         <h3 class = "lead">Contact Us</h3>
-                        <p class = "text text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga.</p>
+                        <p class = "text teconst getLocationAndFetchWeather = () => {
+                            if (navigator.geolocation) {
+                              navigator.geolocation.getCurrentPosition(
+                                (position) => {
+                                  const { latitude, longitude } = position.coords;
+                                  fetchWeatherData(latitude, longitude); // Fetch weather using coordinates
+                                },
+                                (error) => {
+                                  setWeatherError("Error fetching location");
+                                  console.error("Error getting location:", error);
+                                }
+                              );
+                            } else {
+                              setWeatherError("Geolocation is not supported by this browser.");
+                            }
+                          };xt-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga.</p>
                     </div>
                     <form>
                         <div class = "form-element">
@@ -430,6 +444,37 @@
     <!-- custom js -->
     <script src = "js/script.js"></script>
     <script>
+        const getLocationAndFetchWeather = () => {
+  // Force asking for permission on reload by resetting the location permission
+  navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+    if (result.state === 'granted' || result.state === 'prompt') {
+      getWeather(); // If permission is granted or prompting, go ahead
+    } else if (result.state === 'denied') {
+      setWeatherError("Geolocation access denied.");
+    }
+  });
+
+  function getWeather() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchWeatherData(latitude, longitude); // Fetch weather using coordinates
+        },
+        (error) => {
+          setWeatherError("Error fetching location");
+          console.error("Error getting location:", error);
+        }
+      );
+    } else {
+      setWeatherError("Geolocation is not supported by this browser.");
+    }
+  }
+};
+
+// Call this function to trigger location and weather fetching
+getLocationAndFetchWeather();
+
         document.getElementById('fetchData').onclick = async () => {
             try {
                 const response = await fetch('http://127.0.0.1:5000/api/data');
